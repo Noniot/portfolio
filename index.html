@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cherono Mercy — Portfolio</title>
+  <meta name="description" content="Portfolio website for Cherono Mercy — software developer, data engineering enthusiast." />
+  <style>
+    :root{
+      --bg:#fff7f0;           /* warm beige background */
+      --card:#ffffff;         /* clean white for cards */
+      --accent:#ff7f50;       /* coral accent */
+      --muted:#555555;        /* muted text */
+      --glass: rgba(255,127,80,0.1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#333;background:linear-gradient(180deg,#fff7f0 0%, #ffe8da 100%)}
+    .container{max-width:1000px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffb085);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav a{color:var(--muted);text-decoration:none;margin:0 10px;padding:8px;border-radius:8px}
+    nav a.active, nav a:hover{color:#000;background:var(--glass)}
+    main{margin-top:28px}
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:center}
+    .hero-card{background:#ffffff;padding:22px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.1)}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin-top:8px}
+    .cta{margin-top:14px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ffb085);color:#fff;text-decoration:none;font-weight:600}
+    .card{background:var(--card);padding:18px;border-radius:12px}
+
+    /* bio */
+    .bio-grid{display:grid;grid-template-columns:220px 1fr;gap:18px}
+    .avatar img{width:100%;border-radius:12px;height:290px;object-fit:cover}
+
+    /* portfolio */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+    .project-card{padding:14px;border-radius:10px;background:#ffffff;box-shadow:0 4px 12px rgba(0,0,0,0.05);margin-bottom:16px}
+    .project-card h3{margin:0 0 6px 0}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tag {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #ff7f50;   /* coral accent */
+  color: #fff;           /* white text */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s, background 0.2s;
+   }
+
+.tag:hover {
+  background: #ff5a24;   /* darker coral on hover */
+  transform: scale(1.05);
+}
+
+    /* elevator pitch / video upload */
+    .upload-area{border:2px dashed rgba(0,0,0,0.1);padding:18px;border-radius:12px;text-align:center;background:#fff}
+    input[type=file]{display:none}
+    .video-preview{width:100%;max-height:420px;border-radius:10px;margin-top:12px}
+
+    footer{color:var(--muted);text-align:center;margin:40px 0 20px}
+    .socials{display:flex;justify-content:center;gap:20px}
+    .socials a{color:var(--muted);font-size:24px;transition:color 0.2s}
+    .socials a:hover{color:var(--accent)}
+    /* responsiveness */
+    @media (max-width:880px){.hero{grid-template-columns:1fr;}.bio-grid{grid-template-columns:1fr}.logo{width:48px;height:48px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CM</div>
+        <div>
+          <div style="font-weight:700">Mercy Cherono</div>
+          <div style="font-size:12px;color:var(--muted)">Full-Stack Software Engineer | Data Engineering Enthusiast</div>
+        </div>
+      </div>
+      <nav id="mainNav">
+        <a href="#" data-target="home" class="active">Home</a>
+        <a href="#" data-target="bio">Bio</a>
+        <a href="#" data-target="portfolio">Portfolio</a>
+        <a href="#" data-target="elevator">Elevator Pitch</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Home -->
+      <section id="home" class="hero-card hero">
+        <div>
+          <h1>Hi,</h1>
+          <h2>I’m  Mercy Cherono</h2>
+          <p class="lead">A full stack software engineer and data engineering enthusiast building practical tools for my community. I enjoy turning messy data into meaningful stories and simple, usable apps.</p>
+          <div class="cta">
+            <a class="btn" href="#" onclick="openSection('portfolio'); return false;">See my work</a>
+            <a style="margin-left:10px;color:var(--muted)" href="#" onclick="openSection('elevator'); return false;">Watch elevator pitch</a>
+          </div>
+        </div>
+        
+      </section>
+
+      <!-- Bio -->
+      <section id="bio" class="hero-card" style="display:none;margin-top:18px">
+        <div class="bio-grid">
+          <div class="avatar">
+            <img src="images/profiles.jpeg" alt="Cherono Mercy profile photo" />
+          </div>
+          <div>
+            <h2>About me</h2>
+            <p style="color:var(--muted)">I’m a data engineering enthusiast passionate about solving problems and turning raw data into meaningful insights. With a background in software development, I bridge the gap between building reliable systems and creating data pipelines that make information accessible, usable, and impactful. My goal is to design solutions that not only power decisions but also empower people—especially by ensuring that overlooked voices and stories are represented in data.</p>
+            <h3>Skills</h3>
+            <div class="tags">
+              <span class="tag">C#/.NET</span>
+              <span class="tag">Python</span>
+              <span class="tag">React</span>
+              <span class="tag">Data Engineering</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Cloud Technologies</span>
+            </div>
+
+            <h3 style="margin-top:12px">Fun fact</h3>
+            <p style="color:var(--muted)">I can’t stop until I solve a tricky problem — the kind of person who will debug until dawn.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio -->
+      <section id="portfolio" class="hero-card" style="display:none;margin-top:18px">
+        <h2 style="margin-top:0">Portfolio</h2>
+
+        <div class="projects">
+
+<div class="project-card">
+            <h3>Attendance System</h3>
+            <p>
+             Biometric attendance tracker with Power BI dashboard for absentee  insights.
+            </p>
+            <div class="tags">
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Data Modelling</span>
+             
+            </div>
+          </div>
+
+
+
+
+          <!-- Project 1 -->
+          <div class="project-card">
+            <h3>Job Creation Wireframe (Figma Project)</h3>
+            <p>
+             Designed a job creation platform wireframe in Figma, focusing on user-friendly layout and accessibility.
+              Collaborated with peers to apply design thinking, teamwork, and planning skills. 
+              Practiced translating ideas into a structured prototype to communicate functionality.
+            </p>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">UI/UX Design</span>
+              <span class="tag">Communication</span>
+              <span class="tag">Storytelling</span>
+              <span class="tag">Problem-Solving</span>
+              <span class="tag">Teamwork</span>
+            </div>
+            <a href="https://www.figma.com/deck/3Wi9BgT8ljQq3t9PSWRgmP/websitewireframjobcreation?node-id=1-42&t=33xvqh4drhOpuwOQ-1" target="_blank">View Project</a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <h3>Job Creation Slide Deck (Presentation Project)</h3>
+            <p>
+              Created a Google Slides deck to present solutions for job creation. Explained the problem, demonstrated the wireframe design, and outlined how funding could support deployment.
+               Practiced professional communication, storytelling, and visual presentation skills to deliver ideas clearly.
+            </p>
+            <div class="tags">
+              <span class="tag">Google Sheets</span>
+              <span class="tag">Google Slides</span>
+              <span class="tag">Teamwork</span>
+              <span class="tag">Leadership</span>
+              <span class="tag">Communication</span>
+            </div>
+            <a href="https://docs.google.com/presentation/d/11oFlR3ThAgZJ5YX4FxgB0aI13M3KlSz8ehNYVaa-nmQ/edit?usp=sharing" target="_blank">View Project</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Elevator pitch -->
+      <section id="elevator" class="hero-card" style="display:none;margin-top:18px">
+        <h2 style="margin-top:0">Elevator Pitch</h2>
+
+        <iframe
+  src="https://drive.google.com/file/d/15SLD3jPGrqLu3NywRkaIbgKiLBswNxZI/preview"
+  width="640"
+  height="360"
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+></iframe>
+
+
+
+
+
+        
+       
+
+      </section>
+
+    </main>
+
+    <footer>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+  </div>
+
+  <script>
+    function openSection(id){
+      document.querySelectorAll('main > section').forEach(s=>s.style.display='none');
+      const sec = document.getElementById(id);
+      if(sec) sec.style.display='block';
+      document.querySelectorAll('#mainNav a').forEach(a=>a.classList.remove('active'));
+      document.querySelector('#mainNav a[data-target="'+id+'"]')?.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    document.querySelectorAll('#mainNav a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault(); openSection(a.dataset.target);
+      });
+    });
+
+    // default show home
+    openSection('home');
+
+    // video upload preview
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const fileName = document.getElementById('fileName');
+    fileInput.addEventListener('change', (e)=>{
+      const file = e.target.files[0];
+      if(!file) return;
+      fileName.textContent = file.name + ' (' + Math.round(file.size/1024) + ' KB)';
+      const url = URL.createObjectURL(file);
+      preview.src = url; preview.style.display='block'; preview.play();
+    });
+
+    function embedFromUrl(){
+      const url = document.getElementById('videoUrl').value.trim();
+      const wrap = document.getElementById('embedWrap');
+      wrap.innerHTML='';
+      if(!url) return;
+      const yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)||youtu\.be\/)([\w-]{5,})/i);
+      const vimeo = url.match(/vimeo\.com\/(\d+)/);
+      if(yt){
+        const id = yt[1];
+        wrap.innerHTML = `<iframe width="100%" height="360" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>`;
+      } else if(vimeo){
+        const id = vimeo[1];
+        wrap.innerHTML = `<iframe width="100%" height="360" src="https://player.vimeo.com/video/${id}" frameborder="0" allowfullscreen></iframe>`;
+      } else {
+        wrap.innerHTML = '<div style="color:var(--muted)">Unsupported URL. Try a YouTube or Vimeo share link.</div>';
+      }
+    }
+  </script>
+</body>
+</html>
